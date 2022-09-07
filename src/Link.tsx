@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import { useRouter } from 'next/router';
+import React from 'react';
 
 // Add support for the sx prop for consistency with the other branches.
 const Anchor = styled('a')({});

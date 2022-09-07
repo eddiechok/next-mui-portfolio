@@ -47,7 +47,7 @@ module.exports = {
         'react/prop-types': 'off',
 
         'import/order': [
-          'error',
+          'warn',
           {
             groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
             'newlines-between': 'always',
@@ -69,7 +69,7 @@ module.exports = {
         '@typescript-eslint/no-empty-function': ['off'],
         '@typescript-eslint/no-explicit-any': ['off'],
 
-        'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+        'prettier/prettier': ['warn', {}, { usePrettierrc: true }],
         'unused-imports/no-unused-imports': 'error',
         'unused-imports/no-unused-vars': [
           'warn',
