@@ -1,15 +1,16 @@
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import type { NextPage } from 'next';
 
+import ContentLayout from '@/layout/ContentLayout';
+
 import Copyright from '../src/Copyright';
-import Link from '../src/Link';
+import Link from '../src/lib/Link';
 import ProTip from '../src/ProTip';
 
 const Home: NextPage = () => {
   return (
-    <Container maxWidth="lg">
+    <ContentLayout>
       <Box
         sx={{
           my: 4,
@@ -28,7 +29,7 @@ const Home: NextPage = () => {
         <ProTip />
         <Copyright />
       </Box>
-    </Container>
+    </ContentLayout>
   );
 };
 

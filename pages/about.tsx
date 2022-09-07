@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import type { NextPage } from 'next';
 
 import Copyright from '../src/Copyright';
-import Link from '../src/Link';
+import Link from '../src/lib/Link';
 import ProTip from '../src/ProTip';
 
 const About: NextPage = () => {
