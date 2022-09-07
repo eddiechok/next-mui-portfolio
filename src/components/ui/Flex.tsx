@@ -15,7 +15,16 @@ export type FlexOptions = {
 
 export type FlexProps = FlexOptions & BoxProps;
 
-const Flex = ({ direction, align, justify, wrap, basis, grow, shrink, ...props }: FlexProps) => {
+export const Flex = ({
+  direction,
+  align,
+  justify,
+  wrap,
+  basis,
+  grow,
+  shrink,
+  ...props
+}: FlexProps) => {
   const flexSx = {
     display: 'flex',
     flexDirection: direction,
@@ -29,5 +38,3 @@ const Flex = ({ direction, align, justify, wrap, basis, grow, shrink, ...props }
 
   return <Box {...props} sx={[flexSx, ...packSx(props.sx)]} />;
 };
-
-export default Flex;

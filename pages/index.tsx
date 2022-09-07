@@ -1,34 +1,12 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import type { NextPage } from 'next';
 
+import { Hero } from '@/features/home';
 import ContentLayout from '@/layout/ContentLayout';
-
-import Copyright from '../src/Copyright';
-import Link from '../src/lib/Link';
-import ProTip from '../src/ProTip';
 
 const Home: NextPage = () => {
   return (
     <ContentLayout>
-      <Box
-        sx={{
-          my: 4,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Typography variant="h4" component="h1" gutterBottom>
-          MUI v5 + Next.js with TypeScript example
-        </Typography>
-        <Link href="/about" color="secondary">
-          Go to the about page
-        </Link>
-        <ProTip />
-        <Copyright />
-      </Box>
+      <Hero />
     </ContentLayout>
   );
 };
