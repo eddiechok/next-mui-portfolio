@@ -8,7 +8,7 @@ export type NavbarProps = {
 
 const Navbar = ({ navItems, onClose }: NavbarProps) => {
   return (
-    <AppBar component="nav">
+    <AppBar component="nav" color="secondary">
       <Toolbar>
         <IconButton
           color="inherit"
@@ -24,11 +24,11 @@ const Navbar = ({ navItems, onClose }: NavbarProps) => {
           component="div"
           sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
         >
-          MUI
+          Eddie Chok
         </Typography>
         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           {navItems.map((item) => (
-            <Button key={item} sx={{ color: '#fff' }}>
+            <Button variant="text" key={item} sx={{ color: 'text.primary' }}>
               {item}
             </Button>
           ))}

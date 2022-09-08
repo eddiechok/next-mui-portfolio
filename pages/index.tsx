@@ -1,12 +1,23 @@
 import type { NextPage } from 'next';
 
-import { Hero } from '@/features/home';
+import {
+  AboutSection,
+  ContactMeSection,
+  HeroSection,
+  SkillSection,
+  WorkSection,
+} from '@/features/home';
 import ContentLayout from '@/layout/ContentLayout';
+import '@/utils/validationKeys';
 
 const Home: NextPage = () => {
   return (
     <ContentLayout>
-      <Hero />
+      <HeroSection />
+      <WorkSection />
+      <SkillSection />
+      <AboutSection />
+      <ContactMeSection />
     </ContentLayout>
   );
 };

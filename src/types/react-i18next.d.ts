@@ -3,8 +3,8 @@
  */
 
 // import all namespaces (for the default language, only)
-import { CommonNamespace } from '@/types/commonNamespace.type';
-import { ValidationNamespace } from '@/types/validationNamespace.type';
+import { CommonKeys } from '@/utils/commonKeys';
+import { ValidationKeys } from '@/utils/validationKeys';
 // import the original type declarations
 import 'react-i18next';
 
@@ -15,8 +15,8 @@ declare module 'react-i18next' {
     defaultNS: 'common';
     // custom resources type
     resources: {
-      common: CommonNamespace;
-      validation: ValidationNamespace;
+      common: CommonKeys;
+      validation: ValidationKeys;
     };
   }
 }
