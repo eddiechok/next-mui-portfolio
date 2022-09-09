@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 
 import { ContentSection, Flex } from '@/components/ui';
@@ -8,17 +8,37 @@ export const SkillSection = () => {
 
   return (
     <ContentSection>
-      <Flex gap={4} align="center" justify="space-between">
-        <Box>
-          <Typography variant="h1" color="text.primary">
+      <Grid container spacing={6} rowSpacing={10} alignItems="center">
+        <Grid
+          item
+          xs={12}
+          md
+          sx={{
+            textAlign: {
+              xs: 'center',
+              md: 'left',
+            },
+          }}
+        >
+          <Typography variant="h1" fontWeight="bold">
             {t('skill_title')}
           </Typography>
           <Typography color="text.secondary" mt={6}>
             {t('skill_desc')}
           </Typography>
-        </Box>
-        <Box sx={{ bgcolor: 'background.paper', width: 540, height: 461, borderRadius: 4 }} />
-      </Flex>
+        </Grid>
+        <Grid item xs={12} md component={Flex} align="center" justify="center">
+          <Box
+            sx={{
+              bgcolor: 'background.paper',
+              width: 1,
+              maxWidth: 400,
+              height: 400,
+              borderRadius: 4,
+            }}
+          />
+        </Grid>
+      </Grid>
     </ContentSection>
   );
 };

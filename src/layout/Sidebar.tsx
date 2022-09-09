@@ -6,8 +6,12 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Toolbar,
   Typography,
 } from '@mui/material';
+import { useTranslation } from 'next-i18next';
+
+import { CloseButton } from '@/components/ui';
 
 export type SidebarProps = {
   open: boolean;
@@ -17,10 +21,13 @@ export type SidebarProps = {
 };
 
 const Sidebar = ({ open, onClose, drawerWidth, navItems }: SidebarProps) => {
+  const { t } = useTranslation();
+
   return (
     <Box component="nav">
       <Drawer
         variant="temporary"
+        anchor="right"
         open={open}
         onClose={onClose}
         ModalProps={{
@@ -28,24 +35,34 @@ const Sidebar = ({ open, onClose, drawerWidth, navItems }: SidebarProps) => {
         }}
         sx={{
           display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+          '& .MuiDrawer-paper': {
+            boxSizing: 'border-box',
+            width: {
+              xs: 1,
+              sm: drawerWidth,
+            },
+          },
         }}
       >
-        <Box onClick={onClose} sx={{ textAlign: 'center' }}>
-          <Typography variant="h6" sx={{ my: 2 }}>
-            MUI
+        <Toolbar>
+          <Typography variant="h6" fontWeight="bold" flexGrow={1}>
+            {t('app_name')}
           </Typography>
-          <Divider />
-          <List>
-            {navItems.map((item) => (
-              <ListItem key={item} disablePadding>
-                <ListItemButton sx={{ textAlign: 'center' }}>
-                  <ListItemText primary={item} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
+          <CloseButton onClick={onClose} />
+        </Toolbar>
+        <Divider />
+        <List>
+          {navItems.map((item) => (
+            <ListItem key={item}>
+              <ListItemButton>
+                <ListItemText
+                  primary={item}
+                  primaryTypographyProps={{ variant: 'h4', fontWeight: 'bold' }}
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
       </Drawer>
     </Box>
   );

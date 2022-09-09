@@ -60,6 +60,7 @@ export const ContactMeSection = () => {
               label={t('message')}
               required
               multiline
+              minRows={5}
               fullWidth
               sx={{
                 height: 1,

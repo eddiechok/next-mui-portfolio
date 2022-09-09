@@ -16,9 +16,8 @@ const Navbar = ({ navItems, onClose }: NavbarProps) => {
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          edge="start"
           onClick={onClose}
-          sx={{ mr: 2, display: { sm: 'none' } }}
+          sx={{ display: { xs: 'block', sm: 'none' }, ml: 'auto' }}
         >
           <IconMenu2 />
         </IconButton>

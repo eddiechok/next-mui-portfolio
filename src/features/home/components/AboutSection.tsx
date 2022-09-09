@@ -10,8 +10,8 @@ export const AboutSection = () => {
     <Grid container>
       <Grid item xs={12} md={6}>
         <ContentSection sx={{ bgcolor: 'background.paper', height: 1 }}>
-          <Flex direction="column" justify="center" height={1}>
-            <Typography variant="h1" color="text.primary">
+          <Flex direction="column" justify="center" height={1} align={{ xs: 'center', md: 'left' }}>
+            <Typography variant="h1" fontWeight="bold">
               {t('about_title')}
             </Typography>
             <Typography color="text.secondary" mt={6}>

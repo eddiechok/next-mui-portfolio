@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
-import { PropsWithChildren } from 'react';
+import { useTranslation } from 'next-i18next';
+import { PropsWithChildren, useMemo } from 'react';
 
 import { useDisclosure } from '@/hooks/useDisclosure';
 import Footer from '@/layout/Footer';
@@ -8,11 +9,12 @@ import Sidebar from '@/layout/Sidebar';
 
 export type DefaultLayoutProps = PropsWithChildren;
 
-const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+const drawerWidth = 280;
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+  const { t } = useTranslation();
   const [mobileOpened, mobileHandlers] = useDisclosure(false);
+  const navItems = useMemo(() => [t('work'), t('skills'), t('case_study'), t('about')], [t]);
 
   return (
     <>
