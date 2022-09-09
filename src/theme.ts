@@ -19,6 +19,9 @@ let theme = createTheme({
     secondary: {
       main: '#F1F6F9',
     },
+    error: {
+      main: '#F03E3E',
+    },
     text: {
       primary: '#14274E',
       secondary: '#9BA4B4',

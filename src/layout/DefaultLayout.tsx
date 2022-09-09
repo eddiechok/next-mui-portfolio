@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 import { PropsWithChildren, useMemo } from 'react';
 
-import { useDisclosure } from '@/hooks/useDisclosure';
+import useDisclosure from '@/hooks/useDisclosure';
 import Footer from '@/layout/Footer';
 import Navbar from '@/layout/Navbar';
 import Sidebar from '@/layout/Sidebar';
