@@ -1,11 +1,16 @@
-import { createTheme, experimental_sx as sx } from '@mui/material/styles';
+import {
+  createTheme,
+  experimental_sx as sx,
+  responsiveFontSizes,
+  ThemeOptions,
+} from '@mui/material/styles';
 
 const titleStyle = {
   fontFamily: "'Baloo 2', cursive",
 };
 
 // Create a theme instance.
-const theme = createTheme({
+let theme = createTheme({
   palette: {
     primary: {
       main: '#C6A98A',
@@ -62,7 +67,25 @@ const theme = createTheme({
         }),
       },
     },
+    MuiMenu: {
+      defaultProps: {
+        elevation: 3,
+      },
+    },
   },
 });
+
+theme = createTheme(theme, {
+  shadows: {
+    ...theme.shadows,
+    1: '0 1px 2px 0 rgba(0, 0, 0, 0.05)', // sm
+    2: '0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06)', // md
+    3: '0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05)', // lg
+    4: '0 20px 25px -5px rgba(0, 0, 0, 0.1),0 10px 10px -5px rgba(0, 0, 0, 0.04)', // xl
+    5: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', // 2xl
+  },
+} as ThemeOptions);
+
+theme = responsiveFontSizes(theme);
 
 export default theme;

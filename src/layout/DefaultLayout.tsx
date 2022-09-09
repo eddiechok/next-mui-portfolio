@@ -9,7 +9,7 @@ import Sidebar from '@/layout/Sidebar';
 
 export type DefaultLayoutProps = PropsWithChildren;
 
-const drawerWidth = 280;
+const drawerWidth = 360;
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   const { t } = useTranslation();

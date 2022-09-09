@@ -13,11 +13,11 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Baloo+2&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap"
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
             rel="stylesheet"
           />
           <meta name="emotion-insertion-point" content="" />

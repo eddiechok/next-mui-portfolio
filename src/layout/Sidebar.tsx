@@ -27,14 +27,14 @@ const Sidebar = ({ open, onClose, drawerWidth, navItems }: SidebarProps) => {
     <Box component="nav">
       <Drawer
         variant="temporary"
-        anchor="right"
+        anchor="left"
         open={open}
         onClose={onClose}
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: 'block', sm: 'none' },
+          display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: {
@@ -51,18 +51,20 @@ const Sidebar = ({ open, onClose, drawerWidth, navItems }: SidebarProps) => {
           <CloseButton onClick={onClose} />
         </Toolbar>
         <Divider />
-        <List>
-          {navItems.map((item) => (
-            <ListItem key={item}>
-              <ListItemButton>
-                <ListItemText
-                  primary={item}
-                  primaryTypographyProps={{ variant: 'h4', fontWeight: 'bold' }}
-                />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <Box p={3}>
+          <List>
+            {navItems.map((item) => (
+              <ListItem key={item}>
+                <ListItemButton>
+                  <ListItemText
+                    primary={item}
+                    primaryTypographyProps={{ variant: 'h4', fontWeight: 'bold' }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
       </Drawer>
     </Box>
   );
