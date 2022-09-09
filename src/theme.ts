@@ -35,7 +35,7 @@ const theme = createTheme({
     h3: { ...titleStyle },
     h4: { ...titleStyle },
     h5: { ...titleStyle },
-    h6: { ...titleStyle },
+    h6: { ...titleStyle, fontSize: 16 },
   },
   components: {
     MuiButton: {

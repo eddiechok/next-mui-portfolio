@@ -18,6 +18,7 @@ const commonKeyArray = [
   'subject',
   'message',
   'send',
+  'copyright_year',
 ] as const;
 
 export type CommonKey = $ElementType<typeof commonKeyArray, number>;

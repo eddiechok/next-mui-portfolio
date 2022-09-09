@@ -1,5 +1,6 @@
 import { Box, Typography, AppBar, Button, IconButton, Toolbar } from '@mui/material';
 import { IconMenu2 } from '@tabler/icons';
+import { useTranslation } from 'next-i18next';
 
 export type NavbarProps = {
   navItems: string[];
@@ -7,6 +8,8 @@ export type NavbarProps = {
 };
 
 const Navbar = ({ navItems, onClose }: NavbarProps) => {
+  const { t } = useTranslation();
+
   return (
     <AppBar component="nav" color="secondary">
       <Toolbar>
@@ -22,9 +25,9 @@ const Navbar = ({ navItems, onClose }: NavbarProps) => {
         <Typography
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+          sx={{ flexGrow: 1, fontWeight: 'bold', display: { xs: 'none', sm: 'block' } }}
         >
-          Eddie Chok
+          {t('app_name')}
         </Typography>
         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
           {navItems.map((item) => (

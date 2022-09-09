@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import { PropsWithChildren } from 'react';
 
 import { useDisclosure } from '@/hooks/useDisclosure';
+import Footer from '@/layout/Footer';
 import Navbar from '@/layout/Navbar';
 import Sidebar from '@/layout/Sidebar';
 
@@ -23,6 +24,7 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
         navItems={navItems}
       />
       <Box component="main">{children}</Box>
+      <Footer />
     </>
   );
 };
