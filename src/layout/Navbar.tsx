@@ -2,7 +2,7 @@ import { Typography, AppBar, Button, IconButton, Toolbar, Box, useTheme } from '
 import { IconLanguage, IconMenu2, IconMessageCircle, IconSun } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
-import { Link as ReactScrollLink } from 'react-scroll';
+import { Link as ReactScrollLink, scroller } from 'react-scroll';
 
 import { AppMenu } from '@/components/menu';
 import { ContainedIconButton, Flex } from '@/components/ui';
@@ -91,7 +91,17 @@ const Navbar = ({ navItems, onClose }: NavbarProps) => {
           <IconMessageCircle />
         </ContainedIconButton>
         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-          <Button disableElevation endIcon={<IconMessageCircle />}>
+          <Button
+            disableElevation
+            endIcon={<IconMessageCircle />}
+            onClick={() =>
+              scroller.scrollTo('#contact-me-section', {
+                smooth: true,
+                spy: true,
+                offset: -(theme.mixins.toolbar.minHeight || 0),
+              })
+            }
+          >
             {t('contact_me')}
           </Button>
         </Box>
