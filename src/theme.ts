@@ -46,6 +46,18 @@ let theme = createTheme({
     h6: { ...titleStyle, fontSize: 16 },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        'html, body, #__next': {
+          height: '100%',
+        },
+      },
+    },
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: 'lg',
+      },
+    },
     MuiButton: {
       defaultProps: {
         variant: 'contained',

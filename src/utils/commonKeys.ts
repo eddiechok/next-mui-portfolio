@@ -24,6 +24,8 @@ const commonKeyArray = [
   'case_study',
   'about',
   'contact_me_success_alert',
+  'introduction',
+  'introduction_desc',
 ] as const;
 
 export type CommonKey = $ElementType<typeof commonKeyArray, number>;

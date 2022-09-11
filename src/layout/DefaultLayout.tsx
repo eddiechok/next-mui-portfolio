@@ -29,23 +29,11 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
         label: t('skills'),
         link: '#skill-section',
       },
-      { label: t('case_study'), link: '' },
+      { label: t('case_study'), link: 'case-study' },
       { label: t('about'), link: '#about-section' },
     ],
     [t]
   );
-
-  // useLayoutEffect(() => {
-  //   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  //     anchor.addEventListener('click', function (e) {
-  //       e.preventDefault();
-
-  //       document.querySelector(this.getAttribute('href')).scrollIntoView({
-  //         behavior: 'smooth',
-  //       });
-  //     });
-  //   });
-  // }, []);
 
   return (
     <>
