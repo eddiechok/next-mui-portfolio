@@ -9,12 +9,43 @@ import Sidebar from '@/layout/Sidebar';
 
 export type DefaultLayoutProps = PropsWithChildren;
 
+export type NavItem = {
+  label: string;
+  link: string;
+};
+
 const drawerWidth = 360;
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   const { t } = useTranslation();
   const [mobileOpened, mobileHandlers] = useDisclosure(false);
-  const navItems = useMemo(() => [t('work'), t('skills'), t('case_study'), t('about')], [t]);
+  const navItems = useMemo<NavItem[]>(
+    () => [
+      {
+        label: t('work'),
+        link: '#work-section',
+      },
+      {
+        label: t('skills'),
+        link: '#skill-section',
+      },
+      { label: t('case_study'), link: '' },
+      { label: t('about'), link: '#about-section' },
+    ],
+    [t]
+  );
+
+  // useLayoutEffect(() => {
+  //   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  //     anchor.addEventListener('click', function (e) {
+  //       e.preventDefault();
+
+  //       document.querySelector(this.getAttribute('href')).scrollIntoView({
+  //         behavior: 'smooth',
+  //       });
+  //     });
+  //   });
+  // }, []);
 
   return (
     <>

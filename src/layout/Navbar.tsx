@@ -1,17 +1,21 @@
-import { Typography, AppBar, Button, IconButton, Toolbar, Box } from '@mui/material';
+import { Typography, AppBar, Button, IconButton, Toolbar, Box, useTheme } from '@mui/material';
 import { IconLanguage, IconMenu2, IconMessageCircle, IconSun } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
+import { Link as ReactScrollLink } from 'react-scroll';
 
 import { AppMenu } from '@/components/menu';
 import { ContainedIconButton, Flex } from '@/components/ui';
+import { NavItem } from '@/layout/DefaultLayout';
 
 export type NavbarProps = {
-  navItems: string[];
+  navItems: NavItem[];
   onClose?: () => void;
 };
 
 const Navbar = ({ navItems, onClose }: NavbarProps) => {
   const { t } = useTranslation();
+  const theme = useTheme();
 
   return (
     <AppBar component="nav" color="secondary" elevation={2}>
@@ -33,18 +37,33 @@ const Navbar = ({ navItems, onClose }: NavbarProps) => {
         </Typography>
         <Flex align="center" sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1 }}>
           {navItems.map((item) => (
-            <Button
-              variant="text"
-              key={item}
+            <Box
+              component={item.link.startsWith('#') ? ReactScrollLink : Link}
+              href={item.link}
+              key={item.link}
+              to={item.link}
+              smooth
+              offset={-(theme.mixins.toolbar.minHeight || 0)}
+              spy
               sx={{
-                color: 'text.primary',
-                typography: 'h6',
-                fontWeight: 'bold',
-                textTransform: 'none',
+                textDecoration: 'none',
+                '&.active > *': {
+                  color: 'primary.main',
+                },
               }}
             >
-              {item}
-            </Button>
+              <Button
+                variant="text"
+                sx={{
+                  color: 'text.primary',
+                  typography: 'h6',
+                  fontWeight: 'bold',
+                  textTransform: 'none',
+                }}
+              >
+                {item.label}
+              </Button>
+            </Box>
           ))}
         </Flex>
         <AppMenu>

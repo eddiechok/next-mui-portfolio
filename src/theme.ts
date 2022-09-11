@@ -68,6 +68,17 @@ let theme = createTheme({
             bgcolor: '#F1F3F5',
           },
         }),
+        input: sx({
+          '&:-webkit-autofill': {
+            borderRadius: 2,
+          },
+          '&:autofill': {
+            borderRadius: 2,
+          },
+          '&:-moz-autofill': {
+            borderRadius: 2,
+          },
+        }),
       },
     },
     MuiMenu: {

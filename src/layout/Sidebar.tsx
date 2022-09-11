@@ -10,18 +10,21 @@ import {
   Typography,
 } from '@mui/material';
 import { useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 import { CloseButton } from '@/components/ui';
+import { NavItem } from '@/layout/DefaultLayout';
 
 export type SidebarProps = {
   open: boolean;
   onClose?: () => void;
   drawerWidth: number;
-  navItems: string[];
+  navItems: NavItem[];
 };
 
 const Sidebar = ({ open, onClose, drawerWidth, navItems }: SidebarProps) => {
   const { t } = useTranslation();
+  const router = useRouter();
 
   return (
     <Box component="nav">
@@ -54,10 +57,10 @@ const Sidebar = ({ open, onClose, drawerWidth, navItems }: SidebarProps) => {
         <Box p={3}>
           <List>
             {navItems.map((item) => (
-              <ListItem key={item}>
-                <ListItemButton>
+              <ListItem key={item.link}>
+                <ListItemButton onClick={() => router.push(item.link)}>
                   <ListItemText
-                    primary={item}
+                    primary={item.label}
                     primaryTypographyProps={{ variant: 'h4', fontWeight: 'bold' }}
                   />
                 </ListItemButton>
