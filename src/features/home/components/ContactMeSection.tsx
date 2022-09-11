@@ -7,6 +7,7 @@ import { SchemaOf } from 'yup';
 
 import { Form } from '@/components/hook-form';
 import { ContentSection } from '@/components/ui';
+import Link from '@/lib/Link';
 import { Yup } from '@/lib/yup-validation.config';
 import { useToast } from '@/providers/ToastProvider';
 
@@ -52,6 +53,9 @@ export const ContactMeSection = () => {
           {t('contact_me')}
         </Typography>
         <Typography color="text.secondary">{t('contact_me_desc')}</Typography>
+        <Link color="primary.main" href="/" sx={{ mt: 4 }}>
+          {t('get_my_resume')}
+        </Link>
         <Form methods={methods} onSubmit={onSubmit}>
           <Grid container spacing={6} mt={6}>
             <Grid item xs={12} sm={6}>
