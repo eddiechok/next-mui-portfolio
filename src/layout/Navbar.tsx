@@ -91,7 +91,9 @@ const Navbar = ({ navItems, onClose }: NavbarProps) => {
           <IconMessageCircle />
         </ContainedIconButton>
         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-          <Button endIcon={<IconMessageCircle />}>{t('contact_me')}</Button>
+          <Button disableElevation endIcon={<IconMessageCircle />}>
+            {t('contact_me')}
+          </Button>
         </Box>
       </Toolbar>
     </AppBar>

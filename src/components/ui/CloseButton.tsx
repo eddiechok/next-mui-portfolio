@@ -1,12 +1,30 @@
-import { IconButton, IconButtonProps } from '@mui/material';
 import { IconX } from '@tabler/icons';
 
-export type CloseButtonProps = IconButtonProps;
+import { ContainedIconButton, ContainedIconButtonProps } from '@/components/ui/ContainedIconButton';
+import { packSx } from '@/utils';
+
+export type CloseButtonProps = ContainedIconButtonProps;
 
 export const CloseButton = (props: CloseButtonProps) => {
   return (
-    <IconButton color="inherit" {...props}>
-      <IconX />
-    </IconButton>
+    <ContainedIconButton
+      color="inherit"
+      size="small"
+      disableElevation
+      {...props}
+      sx={[
+        {
+          borderRadius: '50%',
+          bgcolor: 'text.secondary',
+          color: 'white',
+          '&:hover': {
+            bgcolor: 'text.primary',
+          },
+        },
+        ...packSx(props.sx),
+      ]}
+    >
+      <IconX size={16} />
+    </ContainedIconButton>
   );
 };
