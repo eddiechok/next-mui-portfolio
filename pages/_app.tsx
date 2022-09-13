@@ -11,6 +11,7 @@ import createEmotionCache from '@/createEmotionCache';
 import DefaultLayout from '@/layout/DefaultLayout';
 import ToastProvider from '@/providers/ToastProvider';
 import theme from '@/theme';
+import 'animate.css';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();

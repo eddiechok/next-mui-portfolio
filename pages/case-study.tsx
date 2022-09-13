@@ -9,13 +9,12 @@ import {
   timelineConnectorClasses,
 } from '@mui/lab';
 import { Box } from '@mui/material';
-import { IconChevronsDown, IconMouse } from '@tabler/icons';
 import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { CloseButton, Flex } from '@/components/ui';
+import { CloseButton } from '@/components/ui';
 import { CaseStudyContent, CaseStudyIntroduction } from '@/features/case-study';
 import { CommonKey } from '@/utils/commonKeys';
 import { NextPageWithLayout } from 'pages/_app';
@@ -37,6 +36,7 @@ const CaseStudy: NextPageWithLayout<CaseStudyProps> = ({ pages }) => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const anchors = ['introduction', ...pages.map((page) => page.title_key)];
+  const [visitedIntro, setVisitedIntro] = useState(false);
 
   return (
     <>
@@ -98,13 +98,14 @@ const CaseStudy: NextPageWithLayout<CaseStudyProps> = ({ pages }) => {
           anchors={anchors}
           onLeave={(_, destination) => {
             setActiveIndex(destination.index);
+            destination.index === 0 && setVisitedIntro(true);
           }}
           render={() => (
             <ReactFullPage.Wrapper>
               <Box className="section" height={1}>
-                <CaseStudyIntroduction />
+                <CaseStudyIntroduction visited={visitedIntro} />
               </Box>
-              {pages.map((page, i) => (
+              {pages.map((page) => (
                 <Box key={page.title_key} className="section" height={1}>
                   <CaseStudyContent page={page} />
                 </Box>
@@ -113,22 +114,6 @@ const CaseStudy: NextPageWithLayout<CaseStudyProps> = ({ pages }) => {
           )}
         />
       </Box>
-      <Flex
-        align="center"
-        justify="center"
-        direction="column"
-        gap={2}
-        sx={{
-          p: 4,
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-        }}
-      >
-        <IconMouse size={40} strokeWidth={1.5} />
-        <IconChevronsDown />
-      </Flex>
     </>
   );
 };
