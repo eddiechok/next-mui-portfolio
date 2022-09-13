@@ -16,7 +16,7 @@ export const CloseButton = (props: CloseButtonProps) => {
         {
           borderRadius: '50%',
           bgcolor: 'text.secondary',
-          color: 'white',
+          color: 'background.paper',
           '&:hover': {
             bgcolor: 'text.primary',
           },

@@ -54,11 +54,11 @@ const CaseStudy: NextPageWithLayout<CaseStudyProps> = ({ pages }) => {
           justifyContent: 'center',
           zIndex: 1,
           [`.${timelineDotClasses.root}`]: {
-            bgcolor: '#ADB5BD',
+            bgcolor: 'grey.300',
             transition: 'all .5s',
           },
           [`.${timelineConnectorClasses.root}`]: {
-            bgcolor: '#DEE2E6',
+            bgcolor: 'grey.400',
             transition: 'all .5s',
           },
         }}
@@ -68,11 +68,11 @@ const CaseStudy: NextPageWithLayout<CaseStudyProps> = ({ pages }) => {
             key={anchor}
             data-menuanchor={anchor}
             sx={{
-              [`.${timelineDotClasses.root}`]: {
+              [`& .${timelineDotClasses.root}`]: {
                 bgcolor:
                   activeIndex === i ? 'primary.main' : i < activeIndex ? 'text.primary' : undefined,
               },
-              [`.${timelineConnectorClasses.root}`]: {
+              [`& .${timelineConnectorClasses.root}`]: {
                 bgcolor: i < activeIndex ? 'text.primary' : undefined,
               },
             }}

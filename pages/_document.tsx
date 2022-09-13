@@ -2,10 +2,11 @@ import createEmotionServer from '@emotion/server/create-instance';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 import createEmotionCache from '../src/createEmotionCache';
-import theme from '../src/theme';
+import { getDesignTokens } from '../src/theme';
 
 export default class MyDocument extends Document {
   render() {
+    const theme = getDesignTokens();
     return (
       <Html lang="en">
         <Head>

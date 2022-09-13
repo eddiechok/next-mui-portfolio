@@ -1,5 +1,5 @@
 import { Typography, AppBar, Button, IconButton, Toolbar, Box, useTheme } from '@mui/material';
-import { IconLanguage, IconMenu2, IconMessageCircle, IconSun } from '@tabler/icons';
+import { IconLanguage, IconMenu2, IconMessageCircle, IconMoon, IconSun } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { Link as ReactScrollLink, scroller } from 'react-scroll';
@@ -7,6 +7,7 @@ import { Link as ReactScrollLink, scroller } from 'react-scroll';
 import { AppMenu } from '@/components/menu';
 import { ContainedIconButton, Flex } from '@/components/ui';
 import { NavItem } from '@/layout/DefaultLayout';
+import { useApp } from '@/providers/AppProvider';
 
 export type NavbarProps = {
   navItems: NavItem[];
@@ -16,6 +17,7 @@ export type NavbarProps = {
 const Navbar = ({ navItems, onClose }: NavbarProps) => {
   const { t } = useTranslation();
   const theme = useTheme();
+  const { toggleColorMode } = useApp();
 
   return (
     <AppBar component="nav" color="secondary" elevation={2}>
@@ -84,8 +86,8 @@ const Navbar = ({ navItems, onClose }: NavbarProps) => {
             <AppMenu.Item>繁体中文</AppMenu.Item>
           </AppMenu.List>
         </AppMenu>
-        <IconButton color="inherit">
-          <IconSun />
+        <IconButton color="inherit" onClick={toggleColorMode}>
+          {theme.palette.mode === 'light' ? <IconSun /> : <IconMoon />}
         </IconButton>
         <ContainedIconButton color="primary" sx={{ display: { sm: 'none' } }}>
           <IconMessageCircle />

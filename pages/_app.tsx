@@ -1,17 +1,16 @@
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
 import { NextPage } from 'next';
 import { appWithTranslation } from 'next-i18next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 
 import createEmotionCache from '@/createEmotionCache';
 import DefaultLayout from '@/layout/DefaultLayout';
-import ToastProvider from '@/providers/ToastProvider';
-import theme from '@/theme';
+
 import 'animate.css';
+
+import Provider from '@/providers/Provider';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -36,11 +35,7 @@ const MyApp = (props: AppPropsWithLayout) => {
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline enableColorScheme />
-        <ToastProvider>{getLayout(<Component {...pageProps} />)}</ToastProvider>
-      </ThemeProvider>
+      <Provider>{getLayout(<Component {...pageProps} />)}</Provider>
     </CacheProvider>
   );
 };
