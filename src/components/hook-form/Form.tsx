@@ -1,18 +1,18 @@
 import { Box, BoxProps } from '@mui/material';
 import { PropsWithChildren } from 'react';
-import { FormProvider, SubmitHandler, UseFormReturn } from 'react-hook-form';
+import { FieldValues, FormProvider, SubmitHandler, UseFormReturn } from 'react-hook-form';
 
 import FormTextField from '@/components/hook-form/FormTextField';
 import withForm from '@/components/hook-form/withForm';
 
-type TFormProps<FormValues> = PropsWithChildren<
+type TFormProps<FormValues extends FieldValues> = PropsWithChildren<
   Omit<BoxProps<'form'>, 'onSubmit'> & {
     methods: UseFormReturn<FormValues>;
     onSubmit?: SubmitHandler<FormValues>;
   }
 >;
 
-export function Form<FormValues>({
+export function Form<FormValues extends FieldValues>({
   children,
   methods,
   onSubmit,
