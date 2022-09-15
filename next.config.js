@@ -6,6 +6,6 @@ module.exports = {
   reactStrictMode: true,
   i18n,
   images: {
-    domains: ['images.unsplash.com'],
+    domains: ['images.unsplash.com', 'firebasestorage.googleapis.com'],
   },
 };

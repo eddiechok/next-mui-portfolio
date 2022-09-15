@@ -38,7 +38,7 @@ const ToastProvider = ({ children }: PropsWithChildren) => {
         }}
         open={isOpen}
         onClose={close}
-        autoHideDuration={null}
+        autoHideDuration={5000}
         {...snackbarProps}
       >
         <Alert onClose={close} elevation={4} severity={snackbarProps?.color} sx={{ width: '100%' }}>

@@ -31,6 +31,7 @@ const commonKeyArray = [
   'development',
   'testing',
   'deployment',
+  'unknown_error',
 ] as const;
 
 export type CommonKey = $ElementType<typeof commonKeyArray, number>;

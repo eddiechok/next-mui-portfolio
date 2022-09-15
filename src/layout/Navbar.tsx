@@ -2,6 +2,7 @@ import { Typography, AppBar, Button, IconButton, Toolbar, Box, useTheme } from '
 import { IconLanguage, IconMenu2, IconMessageCircle, IconMoon, IconSun } from '@tabler/icons';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Link as ReactScrollLink, scroller } from 'react-scroll';
 
 import { AppMenu } from '@/components/menu';
@@ -18,6 +19,7 @@ const Navbar = ({ navItems, onClose }: NavbarProps) => {
   const { t } = useTranslation();
   const theme = useTheme();
   const { toggleColorMode } = useApp();
+  const router = useRouter();
 
   return (
     <AppBar component="nav" color="secondary" elevation={2}>
@@ -82,8 +84,16 @@ const Navbar = ({ navItems, onClose }: NavbarProps) => {
               horizontal: 'right',
             }}
           >
-            <AppMenu.Item>English</AppMenu.Item>
-            <AppMenu.Item>繁体中文</AppMenu.Item>
+            <AppMenu.Item selected={router.locale === 'en'}>
+              <Link href={router.pathname} locale="en">
+                English
+              </Link>
+            </AppMenu.Item>
+            <AppMenu.Item selected={router.locale === 'zh'}>
+              <Link href={router.pathname} locale="zh">
+                繁体中文
+              </Link>
+            </AppMenu.Item>
           </AppMenu.List>
         </AppMenu>
         <IconButton color="inherit" onClick={toggleColorMode}>

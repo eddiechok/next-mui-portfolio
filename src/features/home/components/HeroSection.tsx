@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material';
-import { useTranslation } from 'next-i18next';
+import { Trans, useTranslation } from 'next-i18next';
 
 import { ContentSection, Flex } from '@/components/ui';
 
@@ -22,13 +22,11 @@ export const HeroSection = () => {
         >
           <Typography color="text.secondary">{t('hero_subtitle')}</Typography>
           <Typography variant="h1" fontWeight="bold" mt={6}>
-            {t('hero_title_:special', {
-              special: (
-                <Box component="span" color="primary.main">
-                  {t('hero_title_special')}
-                </Box>
-              ),
-            })}
+            <Trans
+              i18nKey="hero_title_:special"
+              t={t}
+              components={[<Box component="span" color="primary.main" key="special" />]}
+            />
           </Typography>
         </Grid>
         <Grid item xs={12} md component={Flex} align="center" justify="center">

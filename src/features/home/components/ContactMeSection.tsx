@@ -7,16 +7,13 @@ import { SchemaOf } from 'yup';
 
 import { Form } from '@/components/hook-form';
 import { ContentSection } from '@/components/ui';
+import { sendEmail, SendEmailParams } from '@/features/home';
+import useAppMutation from '@/hooks/useAppMutation';
 import Link from '@/lib/Link';
 import { Yup } from '@/lib/yup-validation.config';
 import { useToast } from '@/providers/ToastProvider';
 
-type FormValues = {
-  email: string;
-  name?: string;
-  subject?: string;
-  message: string;
-};
+type FormValues = SendEmailParams;
 
 const schema: SchemaOf<FormValues> = Yup.object({
   email: Yup.string().required().email(),
@@ -28,6 +25,7 @@ const schema: SchemaOf<FormValues> = Yup.object({
 export const ContactMeSection = () => {
   const { t } = useTranslation();
   const toast = useToast();
+  const { mutate } = useAppMutation(sendEmail);
 
   const methods = useForm<FormValues>({
     defaultValues: {
@@ -40,9 +38,12 @@ export const ContactMeSection = () => {
   });
 
   const onSubmit: SubmitHandler<FormValues> = (values) => {
-    console.log(values);
-    toast.open({
-      message: t('contact_me_success_alert'),
+    mutate(values, {
+      onSuccess: () => {
+        toast.open({
+          message: t('contact_me_success_alert'),
+        });
+      },
     });
   };
 

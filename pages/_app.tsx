@@ -12,6 +12,8 @@ import 'animate.css';
 
 import Provider from '@/providers/Provider';
 
+import nextI18NextConfig from '../next-i18next.config.js';
+
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
@@ -40,4 +42,4 @@ const MyApp = (props: AppPropsWithLayout) => {
   );
 };
 
-export default appWithTranslation(MyApp);
+export default appWithTranslation(MyApp, nextI18NextConfig);

@@ -1,5 +1,7 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
+import { DEFAULT_LOCALE } from '@/config';
 import {
   AboutSection,
   ContactMeSection,
@@ -8,6 +10,7 @@ import {
   WorkSection,
 } from '@/features/home';
 import ContentLayout from '@/layout/ContentLayout';
+
 import '@/utils/validationKeys';
 
 const Home: NextPage = () => {
@@ -23,3 +26,14 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async ({ locale = DEFAULT_LOCALE }) => {
+  const props = await serverSideTranslations(locale, ['common']);
+  return {
+    props,
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every hour
+    revalidate: 60 * 60, // in seconds
+  };
+};

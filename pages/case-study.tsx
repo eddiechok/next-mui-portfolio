@@ -7,6 +7,7 @@ import {
   TimelineItem,
   timelineDotClasses,
   timelineConnectorClasses,
+  timelineItemClasses,
 } from '@mui/lab';
 import { Box } from '@mui/material';
 import { GetStaticProps } from 'next';
@@ -15,27 +16,17 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import { CloseButton } from '@/components/ui';
-import { CaseStudyContent, CaseStudyIntroduction } from '@/features/case-study';
-import { CommonKey } from '@/utils/commonKeys';
+import { CaseStudyContent, CaseStudyIntroduction, getCaseStudy, Page } from '@/features/case-study';
 import { NextPageWithLayout } from 'pages/_app';
 
-export type Page = {
-  title_key: CommonKey;
-  sections: {
-    paragraphs: {
-      images: string[];
-    }[];
-  }[];
-};
-
 type CaseStudyProps = {
-  pages: Page[];
+  pages?: Page[];
 };
 
 const CaseStudy: NextPageWithLayout<CaseStudyProps> = ({ pages }) => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
-  const anchors = ['introduction', ...pages.map((page) => page.title_key)];
+  const anchors = ['introduction', ...(pages ? pages.map((page) => page.title_key) : [])];
   const [visitedIntro, setVisitedIntro] = useState(false);
 
   return (
@@ -68,11 +59,11 @@ const CaseStudy: NextPageWithLayout<CaseStudyProps> = ({ pages }) => {
             key={anchor}
             data-menuanchor={anchor}
             sx={{
-              [`& .${timelineDotClasses.root}`]: {
+              [`&.${timelineItemClasses.root} .${timelineDotClasses.root}`]: {
                 bgcolor:
                   activeIndex === i ? 'primary.main' : i < activeIndex ? 'text.primary' : undefined,
               },
-              [`& .${timelineConnectorClasses.root}`]: {
+              [`&.${timelineItemClasses.root} .${timelineConnectorClasses.root}`]: {
                 bgcolor: i < activeIndex ? 'text.primary' : undefined,
               },
             }}
@@ -105,7 +96,7 @@ const CaseStudy: NextPageWithLayout<CaseStudyProps> = ({ pages }) => {
               <Box className="section" height={1}>
                 <CaseStudyIntroduction visited={visitedIntro} />
               </Box>
-              {pages.map((page) => (
+              {pages?.map((page) => (
                 <Box key={page.title_key} className="section" height={1}>
                   <CaseStudyContent page={page} />
                 </Box>
@@ -120,75 +111,12 @@ const CaseStudy: NextPageWithLayout<CaseStudyProps> = ({ pages }) => {
 
 CaseStudy.getLayout = (page) => page;
 
-export const getStaticProps: GetStaticProps<CaseStudyProps> = async (ctx) => {
+export const getStaticProps: GetStaticProps<CaseStudyProps> = async () => {
+  const caseStudy = await getCaseStudy();
+
   return {
     props: {
-      pages: [
-        {
-          title_key: 'planning',
-          sections: [
-            {
-              paragraphs: [
-                {
-                  images: [
-                    'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2344&q=80',
-                    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-                    'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2344&q=80',
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          title_key: 'development',
-          sections: [
-            {
-              paragraphs: [
-                {
-                  images: [
-                    'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2344&q=80',
-                    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-                    'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2344&q=80',
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          title_key: 'testing',
-          sections: [
-            {
-              paragraphs: [
-                {
-                  images: [
-                    'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2344&q=80',
-                    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-                    'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2344&q=80',
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          title_key: 'deployment',
-          sections: [
-            {
-              paragraphs: [
-                {
-                  images: [
-                    'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2344&q=80',
-                    'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-                    'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2344&q=80',
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
+      pages: caseStudy.data,
     },
   };
 };

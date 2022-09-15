@@ -104,6 +104,10 @@ export const getDesignTokens = (mode: PaletteMode = 'light') => {
           'html, body, #__next': {
             height: '100%',
           },
+          'a:-webkit-any-link': {
+            textDecoration: 'none',
+            color: 'inherit',
+          },
         },
       },
       MuiContainer: {
