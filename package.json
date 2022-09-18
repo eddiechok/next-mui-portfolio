@@ -59,6 +59,7 @@
     "eslint-plugin-testing-library": "latest",
     "eslint-plugin-unused-imports": "^2.0.0",
     "jest": "latest",
+    "jest-environment-jsdom": "^29.0.3",
     "prettier": "latest",
     "ts-jest": "latest",
     "typescript": "latest"
