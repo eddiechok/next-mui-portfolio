@@ -9,12 +9,15 @@ import { validationKeys } from '@/utils/validationKeys';
 yup.setLocale({
   mixed: {
     required: (data) => ({
-      key: validationKeys[':label_is_required'],
+      key: validationKeys['{{label}}_is_required'],
       data,
     }),
   },
   string: {
-    email: validationKeys[':label_invalid_email'],
+    email: (data) => ({
+      key: validationKeys['invalid_email'],
+      data,
+    }),
   },
 });
 

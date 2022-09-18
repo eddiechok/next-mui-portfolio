@@ -10,7 +10,7 @@ export const WorkSection = () => {
   return (
     <Element name="#work-section">
       <ContentSection sx={{ bgcolor: 'background.paper' }}>
-        <Flex direction="column" align="center" justify="space-evenly" gap={10}>
+        <Flex direction="column" align="center" justify="space-evenly" gap={10} textAlign="center">
           <Typography variant="h1" color="text.primary" fontWeight="bold">
             {t('work_title')}
           </Typography>

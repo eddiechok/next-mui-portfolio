@@ -1,6 +1,6 @@
 import { Box, BoxProps, Button } from '@mui/material';
 
-import { useMenuContext } from '@/components/menu/Menu';
+import { useMenuContext } from '@/components/menu/AppMenu';
 
 export type MenuButtonProps<ComponentProps> = BoxProps<'div', ComponentProps>;
 

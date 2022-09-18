@@ -1,6 +1,6 @@
 import { Menu, MenuProps } from '@mui/material';
 
-import { useMenuContext } from '@/components/menu/Menu';
+import { useMenuContext } from '@/components/menu/AppMenu';
 
 export type MenuListProps = Omit<MenuProps, 'open'>;
 

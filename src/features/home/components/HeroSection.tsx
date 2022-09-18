@@ -20,10 +20,12 @@ export const HeroSection = () => {
             },
           }}
         >
-          <Typography color="text.secondary">{t('hero_subtitle')}</Typography>
+          <Typography color="text.secondary" textTransform="uppercase">
+            {t('hero_subtitle')}
+          </Typography>
           <Typography variant="h1" fontWeight="bold" mt={6}>
             <Trans
-              i18nKey="hero_title_:special"
+              i18nKey="hero_title_{{special}}"
               t={t}
               components={[<Box component="span" color="primary.main" key="special" />]}
             />

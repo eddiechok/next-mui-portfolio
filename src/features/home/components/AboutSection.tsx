@@ -16,12 +16,12 @@ export const AboutSection = () => {
               direction="column"
               justify="center"
               height={1}
-              align={{ xs: 'center', md: 'left' }}
+              textAlign={{ xs: 'center', md: 'left' }}
             >
               <Typography variant="h1" fontWeight="bold">
                 {t('about_title')}
               </Typography>
-              <Typography color="text.secondary" mt={6}>
+              <Typography color="text.secondary" mt={6} whiteSpace="pre-line">
                 {t('about_desc')}
               </Typography>
             </Flex>

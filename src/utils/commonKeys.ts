@@ -2,8 +2,7 @@ import { $ElementType } from 'utility-types';
 
 const commonKeyArray = [
   'app_name',
-  'hero_title_:special',
-  'hero_title_special',
+  'hero_title_{{special}}',
   'hero_subtitle',
   'work_title',
   'work_desc',

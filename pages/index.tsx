@@ -28,7 +28,7 @@ const Home: NextPage = () => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async ({ locale = DEFAULT_LOCALE }) => {
-  const props = await serverSideTranslations(locale, ['common']);
+  const props = await serverSideTranslations(locale, ['common', 'validation']);
   return {
     props,
     // Next.js will attempt to re-generate the page:

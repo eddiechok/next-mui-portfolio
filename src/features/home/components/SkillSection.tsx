@@ -25,7 +25,7 @@ export const SkillSection = () => {
             <Typography variant="h1" fontWeight="bold">
               {t('skill_title')}
             </Typography>
-            <Typography color="text.secondary" mt={6}>
+            <Typography color="text.secondary" mt={6} whiteSpace="pre-line">
               {t('skill_desc')}
             </Typography>
           </Grid>

@@ -104,7 +104,7 @@ export const getDesignTokens = (mode: PaletteMode = 'light') => {
           'html, body, #__next': {
             height: '100%',
           },
-          'a:-webkit-any-link': {
+          a: {
             textDecoration: 'none',
             color: 'inherit',
           },
@@ -113,6 +113,15 @@ export const getDesignTokens = (mode: PaletteMode = 'light') => {
       MuiContainer: {
         defaultProps: {
           maxWidth: 'lg',
+        },
+        styleOverrides: {
+          root: sx({
+            px: {
+              sm: 4,
+              md: 6,
+              lg: 8,
+            },
+          }),
         },
       },
       MuiButton: {

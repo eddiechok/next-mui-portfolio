@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Grid, inputBaseClasses, Stack, Typography } from '@mui/material';
-import { useTranslation } from 'next-i18next';
+import { Trans, useTranslation } from 'next-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Element } from 'react-scroll';
 import { SchemaOf } from 'yup';
@@ -10,7 +10,7 @@ import { ContentSection } from '@/components/ui';
 import { sendEmail, SendEmailParams } from '@/features/home';
 import useAppMutation from '@/hooks/useAppMutation';
 import Link from '@/lib/Link';
-import { Yup } from '@/lib/yup-validation.config';
+import { Yup } from '@/lib/yup-validation';
 import { useToast } from '@/providers/ToastProvider';
 
 type FormValues = SendEmailParams;
@@ -53,10 +53,13 @@ export const ContactMeSection = () => {
         <Typography variant="h1" color="text.primary" fontWeight="bold">
           {t('contact_me')}
         </Typography>
-        <Typography color="text.secondary">{t('contact_me_desc')}</Typography>
-        <Link color="primary.main" href="/" sx={{ mt: 4 }}>
-          {t('get_my_resume')}
-        </Link>
+        <Typography color="text.secondary">
+          <Trans
+            i18nKey="contact_me_desc"
+            t={t}
+            components={[<Link key="get_my_resume" color="primary.main" href="/" />]}
+          />
+        </Typography>
         <Form methods={methods} onSubmit={onSubmit}>
           <Grid container spacing={6} mt={6}>
             <Grid item xs={12} sm={6}>

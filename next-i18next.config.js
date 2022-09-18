@@ -7,13 +7,6 @@ module.exports = {
     defaultLocale: 'en',
     locales: ['en', 'zh'],
   },
-  // change {{variable}} to :variable
-  // interpolation: {
-  //   prefixEscaped: ':\\b',
-  //   suffixEscaped: '(?:\\b)',
-  // },
-  keySeparator: false, // we do not use keys in form messages.welcome
-  nsSeparator: false,
   fallbackLng: false,
   backend: {
     loadPath: function (lng, ns) {
@@ -23,8 +16,12 @@ module.exports = {
       return `https://next-mui-portfolio-default-rtdb.asia-southeast1.firebasedatabase.app/locales/${lng}/${ns}.json`;
     },
     parsePayload: function (ns, key) {
+      // if the key is test_message, return {test_message: 'Test Message'}
       return {
-        [key]: key,
+        [key]: key
+          .split('_')
+          .map((word) => word[0].toUpperCase() + word.substring(1))
+          .join(' '),
       };
     },
     request: function (_, url, payload, callback) {
@@ -57,5 +54,16 @@ module.exports = {
   debug: process.env.NODE_ENV === 'development',
   ns: ['common', 'validation'],
   serializeConfig: false,
-  use: [I18NextHttpBackend],
+  postProcess: ['newLine'],
+  use: [
+    I18NextHttpBackend,
+    {
+      type: 'postProcessor',
+      name: 'newLine',
+      process: function (value) {
+        // unescape \n as data from firebase are escaped
+        return value.replace(/\\n/g, '\n');
+      },
+    },
+  ],
 };
