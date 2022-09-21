@@ -2,8 +2,8 @@ import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 
+import { Page } from '@/features/case-study';
 import { CommonKey } from '@/utils/commonKeys';
-import { Page } from 'pages/case-study';
 
 export type CaseStudyContentProps = {
   page: Page;
