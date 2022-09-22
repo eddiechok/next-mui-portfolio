@@ -4,6 +4,10 @@ import { FunctionComponent } from 'react';
 
 import Provider from '@/providers/Provider';
 
+// eslint-disable-next-line import/export
+export * from '@testing-library/react';
+export { userEvent, rtlRender };
+
 export const waitForLoadingToFinish = () =>
   waitForElementToBeRemoved(
     () => [...screen.queryAllByTestId(/loading/i), ...screen.queryAllByText(/loading/i)],
@@ -29,7 +33,3 @@ export const render = async (
 
   return returnValue;
 };
-
-// eslint-disable-next-line import/export
-export * from '@testing-library/react';
-export { userEvent, rtlRender };

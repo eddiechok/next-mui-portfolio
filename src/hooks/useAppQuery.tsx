@@ -1,5 +1,5 @@
+import { UseQueryOptions, useQuery, QueryKey, QueryFunction } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
-import { UseQueryOptions, useQuery, QueryKey, QueryFunction } from 'react-query';
 
 import { useToast } from '@/providers/ToastProvider';
 

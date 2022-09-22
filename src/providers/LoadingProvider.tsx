@@ -1,4 +1,5 @@
 import { Backdrop, CircularProgress } from '@mui/material';
+import { useIsMutating } from '@tanstack/react-query';
 import React, {
   createContext,
   PropsWithChildren,
@@ -7,7 +8,6 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { useIsMutating } from 'react-query';
 
 type LoadingContextProps = {
   add: () => void;
@@ -49,7 +49,7 @@ const LoadingProvider = ({ children }: PropsWithChildren) => {
           sx={{ zIndex: (theme) => theme.zIndex.modal + 1 }}
           open={isMutating + countLoading > 0}
         >
-          <CircularProgress color="primary" />
+          <CircularProgress color="primary" data-testid="loading" />
         </Backdrop>
       }
     </LoadingContext.Provider>

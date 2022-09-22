@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { UseMutationOptions, useMutation, MutationFunction } from 'react-query';
+import { UseMutationOptions, useMutation, MutationFunction } from '@tanstack/react-query';
 
 import { useToast } from '@/providers/ToastProvider';
 
